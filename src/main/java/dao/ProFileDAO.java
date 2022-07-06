@@ -17,11 +17,6 @@ public class ProFileDAO implements CRUD<ProFile> {
     private static final String SELECT_ALL_PROFILE = "select * from  profile";
     private static final String DELETE_PROFILE_SQL = "delete from profile where idProfile = ?;";
     private static final String UPDATE_PROFILE_SQL = "update profile set name = ?, sex = ?, age =?, address=?, avata = ? where idProfile = ?";
-//    private String name;
-//    private String sex;
-//    private int age;
-//    private String address;
-//    private String imgSrc;
 
     @Override
     public List<ProFile> getAll() {
