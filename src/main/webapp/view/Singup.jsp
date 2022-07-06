@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 <div class="login" >
-    <form class="box" action="view/login.jsp" method="post">
-        <img src="img/logo.png">
+    <form class="box" action="/view/login.jsp" method="post">
+        <img src="/img/logo.png">
 <!--                <h2> Signup  </h2>-->
         <input type="text" name="" placeholder="Username">
         <input type="password" name="'" placeholder="Password">

@@ -8,7 +8,7 @@
 .header{
     width: 100%;
     height: 100vh;
-    background-image: url(../../../../../../dattingAppCoppy/tinderwebsite/img/background.png);
+    background-image:url("/img/background.png");
     background-position: center;
     background-size: cover;
     color: #fff;
