@@ -4,11 +4,13 @@ import java.util.Date;
 
 public class Post {
     private String idPost;
+    private String useName;
     private String imgSrc;
     private Date time;
 
-    public Post(String idPost, String imgSrc, Date time) {
+    public Post(String idPost, String useName, String imgSrc, Date time) {
         this.idPost = idPost;
+        this.useName = useName;
         this.imgSrc = imgSrc;
         this.time = time;
     }
@@ -19,6 +21,14 @@ public class Post {
 
     public void setIdPost(String idPost) {
         this.idPost = idPost;
+    }
+
+    public String getUseName() {
+        return useName;
+    }
+
+    public void setUseName(String useName) {
+        this.useName = useName;
     }
 
     public String getImgSrc() {
