@@ -13,9 +13,8 @@ import java.util.Date;
 import java.util.List;
 
 public class PostDAO implements CRUD<Post> {
-    private static final String INSERT_POST_SQL = "insert into post value (?,?,?);";
-    private static final String SELECT_POST_BY_ID = "select * from  post where idPost =?";
-    private static final String SELECT_ALL_POST = "select * from  post";
+    private static final String INSERT_POST_SQL = "insert into post value (?,?,?,?);";
+    private static final String SELECT_ALL_POST = "select * from  post where useName =?";
     private static final String DELETE_POST_SQL = "delete from account where useName = ?;";
     private static final String UPDATE_POST_SQL = "update  post set img= ? where idPost =?";
 
@@ -27,9 +26,10 @@ public class PostDAO implements CRUD<Post> {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 String idPost = resultSet.getString("idPost");
+                String useName = resultSet.getString("useName");
                 String imgSrc = resultSet.getString("img");
                 Date date = resultSet.getDate("time");
-                post_list.add(new Post(idPost, imgSrc, date));
+                post_list.add(new Post(idPost,useName, imgSrc, date));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -42,8 +42,9 @@ public class PostDAO implements CRUD<Post> {
         try (Connection connection = Connect_MySQL.getConnect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_POST_SQL);
             preparedStatement.setString(1, post.getIdPost());
-            preparedStatement.setString(2, post.getImgSrc());
-            preparedStatement.setDate(3, (java.sql.Date) post.getTime());
+            preparedStatement.setString(2, post.getUseName());
+            preparedStatement.setString(3, post.getImgSrc());
+            preparedStatement.setDate(4, (java.sql.Date) post.getTime());
             return preparedStatement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -71,19 +72,7 @@ public class PostDAO implements CRUD<Post> {
 
     @Override
     public Post findById(String idPost) {
-        try (Connection connection = Connect_MySQL.getConnect();
-             PreparedStatement statement = connection.prepareStatement(SELECT_POST_BY_ID);) {
-            statement.setString(1, idPost);
-            ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()) {
-                String imgSrc = resultSet.getString("img");
-                Date time = resultSet.getDate("mail");
-                return new Post( idPost, imgSrc,time);
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         return null;
     }
 }
