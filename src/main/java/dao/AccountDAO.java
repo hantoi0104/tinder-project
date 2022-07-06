@@ -79,13 +79,13 @@ public class AccountDAO implements CRUD<Account> {
     }
 
     @Override
-    public Account findById(String id) {
+    public Account findById(String useName) {
         try (Connection connection = Connect_MySQL.getConnect();
              PreparedStatement statement = connection.prepareStatement(SELECT_ACCOUNT_BY_ID);) {
+            statement.setString(1, useName);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String useName = resultSet.getString("useName");
                 String passWord = resultSet.getString("passWord");
                 String mail = resultSet.getString("mail");
                return new Account(useName, passWord, mail);
