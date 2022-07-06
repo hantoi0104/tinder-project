@@ -3,14 +3,24 @@ package model;
 import java.util.Date;
 
 public class Message {
+    private String UseName;
     private String idSender;
     private String content;
     Date time;
 
-    public Message(String idSender, String content, Date time) {
+    public Message(String useName, String idSender, String content, Date time) {
+        UseName = useName;
         this.idSender = idSender;
         this.content = content;
         this.time = time;
+    }
+
+    public String getUseName() {
+        return UseName;
+    }
+
+    public void setUseName(String useName) {
+        UseName = useName;
     }
 
     public String getIdSender() {
